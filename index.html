@@ -33,10 +33,10 @@
             </li>
         </ul>
     </nav>
-    <div class="text-center mx-auto p-2" style="width: 50rem;">
-
-        <img src="assets/img/customs/main.jpg" class="img-fluid img-thumbnail rounded mx-auto d-block " alt="...">
-
+    <h5 class="text-light d-flex justify-content-center">Click on the Image for fullscreen</h5>
+    <div class="text-center mx-auto p-2 d-flex" style="width: 50rem;">
+        <img id="map-image" src="assets/img/customs/main.jpg" class="img-fluid img-thumbnail bg-dark rounded mx-auto d-block" alt="..." style="cursor: pointer;">
+        <div id="name-map" class="p-4 text-light"></div>
     </div>
 
 
@@ -61,4 +61,30 @@
         });
     });
 
+    const imageElement = document.getElementById('map-image');
+
+    imageElement.addEventListener('click', function () {
+        if (document.fullscreenElement) {
+            document.exitFullscreen();
+        } else {
+            if (imageElement.requestFullscreen) {
+                imageElement.requestFullscreen();
+            } else if (imageElement.webkitRequestFullscreen) { /* Safari */
+                imageElement.webkitRequestFullscreen();
+            } else if (imageElement.msRequestFullscreen) { /* IE11 */
+                imageElement.msRequestFullscreen();
+            }
+        }
+    });
+
+
+    document.querySelectorAll('.dropdown-item').forEach(item => {
+        item.addEventListener('click', function (event) {
+            const mapName = event.target.getAttribute('value');
+            const imgPath = `assets/img/${mapName}/main.jpg`;
+
+            // Mettre à jour l'image principale
+            imageElement.src = imgPath;
+        });
+    });
 </script>
