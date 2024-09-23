@@ -1,0 +1,14 @@
+.zoom-container {
+    width: 10rem;
+    height: 10rem;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #ccc;
+    display: none; /* Caché par défaut */
+}
+
+.zoomed-image {
+    position: absolute;
+    width: 200%; /* Zoom x2 */
+    height: 200%;
+}
